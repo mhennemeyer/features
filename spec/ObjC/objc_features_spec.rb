@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Feature do
+describe ObjcFeature do
   before(:each) do
     @feature_body = <<-END 
     Feature: Say Hello World
@@ -32,7 +32,7 @@ describe Feature do
     		It should return 'Hello, World! I am Bob.'
     END
     
-    @feature = Feature.new({:title => "Say Hello World", 
+    @feature = ObjcFeature.new({:title => "Say Hello World", 
                             :body  => @feature_body})
   end
   
@@ -78,18 +78,18 @@ describe Feature do
 
     it "exposes itself as a string" do
       expected = <<-END
-    @interface SayHelloWorldTest : OMFeature
-    @end
-    @implementation SayHelloWorldTest
-    -(void) testWithABlankObject
-    {
-        [self Given_a_blank_Object]; [self When_i_send_it_hello]; [self It_should_return___:@"Hello, World!"];
-    }
-    -(void) testWithACustomObject
-    {
-        [self Given_a_custom_Object_with_name___:@"Bob"]; [self When_i_send_it_hello]; [self It_should_return___:@"Hello, World! I am Bob."];
-    }
-    @end
+      @interface SayHelloWorldTest : OMFeature 
+      @end 
+      @implementation SayHelloWorldTest 
+      -(void) testWithABlankObject 
+      { 
+        [self Given_a_blank_Object]; [self When_i_send_it_hello]; [self It_should_return___:@\"Hello, World!\"]; 
+      } 
+      -(void) testWithACustomObject 
+      { 
+        [self Given_a_custom_Object_with_name___:@\"Bob\"]; [self When_i_send_it_hello]; [self It_should_return___:@\"Hello, World! I am Bob.\"]; 
+      } 
+      @end
     END
       @feature.to_s.ignore_whitespace.should eql(expected.ignore_whitespace)
     end

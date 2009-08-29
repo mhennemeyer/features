@@ -1,20 +1,20 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Scenario do
+describe ObjcScenario do
   before(:each) do
     @scenario_body = <<-END 
   		Given a blank Object
   		When i send it hello
   		It should return 'Hello, World!'
     END
-    @mock_feature = mock(Feature)
+    @mock_feature = mock(ObjcFeature)
     @mock_feature.stub!(:scenarios).and_return([])
   end
   context ", New" do
     
     before(:each) do
       
-      @scenario = Scenario.new({
+      @scenario = ObjcScenario.new({
         :title   => "With a blank Object", 
         :body    => @scenario_body,
         :parent  => @mock_feature
