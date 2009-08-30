@@ -1,16 +1,16 @@
-class RailsSuite < Suite
+class ObjcSuite < Suite
   attr_reader :feature_files,              :feature_files_path, 
               :feature_file_suffix,        :feature_files_as_strings,
               :features,                   :test_cases_file,  
+              :feature_class_header_files, :given_scenario_keyword,
               :feature_keyword,            :scenario_keyword,
-              :project_name,               :passed, 
-              :given_scenario_keyword,     :features_helper
+              :project_name,               :passed
   
   def initialize(hash)
     @feature_files_path          = hash[:feature_files_path]
     @feature_file_suffix         = hash[:feature_file_suffix] || "feature"
     @test_cases_file             = hash[:test_cases_file]
-    @features_helper             = File.expand_path(hash[:features_helper])
+    @feature_class_header_files  = hash[:feature_class_header_files] || ["OMFeature.h"]
     @feature_keyword             = hash[:feature_keyword] || "Feature:"
     @scenario_keyword            = hash[:scenario_keyword] || "Scenario:"
     @given_scenario_keyword      = hash[:given_scenario_keyword] || "GivenScenario:"
@@ -31,15 +31,6 @@ class RailsSuite < Suite
 
     %x(touch '/tmp/out.html' && echo '#{html}' > /tmp/out.html && open '/tmp/out.html' )
     
-  end
-  
-  def parse_results_and_open_in_safari(results)
-    html = parse_results(results).html
-    open_in_safari(html)
-  end
-  
-  def open_in_safari(html)
-    %x(touch '/tmp/out.html' && echo '#{html}' > /tmp/out.html && open '/tmp/out.html' )
   end
   
   
@@ -72,7 +63,7 @@ class RailsSuite < Suite
         }
         * {-webkit-border-radius: 10px;}
         body {background-color: #EEE; -webkit-border-radius: 0px;}
-        .feature { background-color: #E0E0E0;padding: 20px; margin: 20px;}
+        .feature { background-color: #CCC;padding: 20px; margin: 20px;}
         .scenario { background-color: #EEE; padding: 20px; margin: 20px}
         .failed {border: 1px solid #C88; background-color: #B77; }
         .passed {border: 1px solid #8C8; background-color: #7B7; }
@@ -118,7 +109,7 @@ class RailsSuite < Suite
   
   def to_s
     <<-END
-    require "#{features_helper}"
+    #{feature_class_header_files.map { |f| "#import \"" + f + "\"" }.join(" ")}
     #{features.map {|f| f.to_s }.join(" ")}
     END
   end
@@ -128,7 +119,7 @@ class RailsSuite < Suite
       :string => feature_files_as_strings.join(" "),
       :keyword => feature_keyword
     })
-    @features = title_body_arr.map {|hash| RailsFeature.new(hash.update({:keyword => feature_keyword}))}
+    @features = title_body_arr.map {|hash| ObjcFeature.new(hash.update({:keyword => feature_keyword}))}
   end
   
   def parse_feature_scenarios

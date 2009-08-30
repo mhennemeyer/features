@@ -154,7 +154,7 @@ describe RailsFeature do
         end
 
         it "has message" do
-          @step.message.should eql('Given_a_custom_Object_with_name___("Bob")')
+          @step.message.should eql('given_a_custom_Object_with_name___("Bob")')
         end
 
       end
@@ -169,7 +169,7 @@ describe RailsFeature do
         end
 
         it "has message" do
-          @step.message.should eql("When_i_send_it_hello")
+          @step.message.should eql("when_i_send_it_hello")
         end
 
       end
@@ -184,7 +184,7 @@ describe RailsFeature do
         end
 
         it "has message" do
-          @step.message.should eql('It_should_return___("Hello, World! I am Bob.")')
+          @step.message.should eql('it_should_return___("Hello, World! I am Bob.")')
         end
       end 
   end

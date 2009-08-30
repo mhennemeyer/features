@@ -7,7 +7,8 @@ describe RailsSuite do
       :feature_files_path         => @feature_files_path,
       :feature_file_suffix        => "feature",
       :test_cases_file            => @feature_files_path + "/FeatureTestCases.rb",
-      :project_name               => "Rails Features"
+      :project_name               => "Rails Features",
+      :features_helper            => @feature_files_path + "/features_helper.rb"
     })
   end
   
@@ -41,6 +42,10 @@ describe RailsSuite do
   
   it "has feature file suffix" do
     @suite.feature_file_suffix.should_not be_nil
+  end
+  
+  it "has a features_helper" do
+    @suite.features_helper.should eql(@feature_files_path + "/features_helper.rb")
   end
   
   it "finds HelloWorld.feature feature files" do
@@ -133,8 +138,13 @@ describe RailsSuite do
         @suite.stub!(:features).and_return(features)
       end
       
-      it "chains all features as strings" do
-        @suite.to_s.ignore_whitespace.should eql("feature_def feature_def")
+      it "chains all features as strings and prepends require features_helper" do
+        expected = <<-END
+        require "#{@feature_files_path}/features_helper.rb"
+        feature_def
+        feature_def
+        END
+        @suite.to_s.ignore_whitespace.should eql(expected.ignore_whitespace)
       end
     end
   end

@@ -1,4 +1,4 @@
-class RailsScenario < Scenario
+class ObjcScenario < Scenario
   attr_reader :steps, :lines, :given_scenario_keyword,
               :title, :body, :parent, :passed
               
@@ -31,13 +31,16 @@ class RailsScenario < Scenario
   
   def verify_status(results="")
     test_case_name = parent.test_case_name
-    
-    # 2) Failure:
-    # test_AnotherFailingOne(FeatureTest) [/test/integration/feature_test.rb:16]:
-    # <false> is not true.
-    
-    result = (results =~ /^\s*#{test_name}\(#{test_case_name}\)/)
-    @passed = result ? false : true
+    #Test Case '-[SayHelloTest testWithABlankObject]' failed (0.001 seconds).
+    results =~ /Test\sCase\s'-\[#{test_case_name}\s#{test_name}\]'\s(\w+)/
+    match = $1
+    if match =~ /failed/
+      @passed = false
+    elsif match =~ /passed/
+      @passed = true
+    else
+      raise "Can't read results File"
+    end
   end
   
   def collect_steps
@@ -64,7 +67,7 @@ class RailsScenario < Scenario
   end
   
   def parse_lines
-    lines.map {|l| RailsStep.new({:body => l}).aggregate!}
+    lines.map {|l| ObjcStep.new({:title => l, :body => l}).aggregate!}
   end
   
   def has_given_scenarios?
@@ -73,13 +76,14 @@ class RailsScenario < Scenario
   
   def to_s
     <<-END
-def #{test_name}
-  #{steps.map {|s| s.to_s}.join("; ")}
-end
+    -(void) #{test_name}
+    {
+        #{steps.map {|s| s.to_s}.join(" ")}
+    }
     END
   end
   
   def test_name
-    "test_#{title.remove_invalid_chars.split(/\s+/).map {|w| w.capitalize}.join('')}"
+    "test#{title.remove_invalid_chars.split(/\s+/).map {|w| w.capitalize}.join('')}"
   end
 end

@@ -1,16 +1,18 @@
-class RailsStep < Step
+class ObjcStep < Step
   attr_reader :message
   
-  attr_reader :body, :parent
+  attr_reader :title, :body, :parent
   def initialize(hash)
+    @title  = hash[:title]
     @body   = hash[:body]
     @parent = hash[:parent]
+    raise "No title given" unless title
     raise "No body given" unless body
   end
   
   def to_html
     s = <<-END
-    <h3 class="step">#{body}</h3>
+    <h3 class="step">#{title}</h3>
     END
     s.strip
   end
@@ -21,9 +23,7 @@ class RailsStep < Step
   end
   
   def first_part
-    body.gsub(/\s+/,"_").gsub(/'[^']*'/, "__").remove_invalid_chars.sub(/./) do |first_char|
-      first_char.downcase
-    end
+    body.gsub(/\s+/,"_").gsub(/'[^']*'/, "__").remove_invalid_chars
   end
   
   def has_args?
@@ -36,25 +36,35 @@ class RailsStep < Step
   
   def args_string
     if has_args?
-      "(" + args.map {|a| '"' + a.to_s + '"'}.join(", ") + ")"
+      ([":@\"#{args[0]}\""] + 
+      (args[1..args.length] || []).map { |a| "arg:@\"#{a}\"" }).join(" ")
     else
       ""
     end
   end
   
   def to_s
-    message
+    "[self #{message}];"
   end
   
   def parameter_string
     if has_args?
-      s = "(arg"
+      s = ":(NSString *)arg "
       (args[1..args.length] || []).each_with_index do |a, i|
-        s << ", arg#{i+2}"
+        s << "arg:(NSString *)arg#{i+2} "
       end
-      s + ")"
+      s
     else
       ""
     end
+  end
+  
+  def to_ocmethod
+    <<-END
+-(void) #{first_part + parameter_string}
+{
+  
+}
+    END
   end
 end

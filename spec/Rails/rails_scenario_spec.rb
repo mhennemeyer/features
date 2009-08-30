@@ -71,7 +71,7 @@ describe RailsScenario do
       end
       
       it "has first_part: Given_a_blank_Object" do
-        @step.first_part.should eql("Given_a_blank_Object")
+        @step.first_part.should eql("given_a_blank_Object")
       end
       
       it "has no args" do
@@ -85,7 +85,7 @@ describe RailsScenario do
       end
       
       it "has first_part: Given_a_blank_Object" do
-        @step.first_part.should eql("It_should_return___")
+        @step.first_part.should eql("it_should_return___")
       end
       
       it "has arg: 'Hello, World!'" do
