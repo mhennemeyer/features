@@ -61,13 +61,13 @@ describe RailsScenario do
     end
     
     it "finds 'Given a blank Object' step" do
-      step = @scenario.steps.detect {|s| s.title == 'Given a blank Object'}
+      step = @scenario.steps.detect {|s| s.body == 'Given a blank Object'}
       step.should_not be_nil
     end
     
     context "with Given a blank Object step" do
       before(:each) do
-        @step = @scenario.steps.detect {|s| s.title == 'Given a blank Object'}
+        @step = @scenario.steps.detect {|s| s.body == 'Given a blank Object'}
       end
       
       it "has first_part: Given_a_blank_Object" do
@@ -81,7 +81,7 @@ describe RailsScenario do
     
     context "with 'It should return 'Hello, World!'' step" do
       before(:each) do
-        @step = @scenario.steps.detect {|s| s.title == "It should return 'Hello, World!'"}
+        @step = @scenario.steps.detect {|s| s.body == "It should return 'Hello, World!'"}
       end
       
       it "has first_part: Given_a_blank_Object" do

@@ -1,4 +1,4 @@
-        class SayHelloWorldTest < RailsTestCaseClass
+        class SayHelloWorldTest < FeaturesTestCaseClass
         def test_WithABlankObject
       Given_a_blank_Object; When_i_send_it_hello; It_should_return___("Hello, World!")
     end
@@ -7,7 +7,7 @@
     end
 
     end
-     class SayHelloUniverseTest < RailsTestCaseClass
+     class SayHelloUniverseTest < FeaturesTestCaseClass
         def test_WithABlankObject
       Given_a_blank_Object; When_i_send_it_helloUniverse; It_should_return___("Hello, Universe!")
     end
@@ -16,7 +16,7 @@
     end
 
     end
-     class SayHelloTest < RailsTestCaseClass
+     class SayHelloTest < FeaturesTestCaseClass
         def test_WithABlankObject
       Given_a_blank_Object; When_i_send_it_hello; It_should_return___("Hello, World!")
     end
