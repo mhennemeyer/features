@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'spec'
-require File.dirname(__FILE__) + '/../om_features.rb'
+require File.dirname(__FILE__) + '/../features.rb'
 
 class String
   def ignore_whitespace

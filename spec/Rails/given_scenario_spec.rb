@@ -9,7 +9,7 @@ When i send it hello
 It should return 'Hello, World!'
     END
     
-    @given_scenario = Scenario.new({
+    @given_scenario = RailsScenario.new({
       :title => "An existing Scenario", 
       :body  => @given_scenario_body
     })
@@ -20,7 +20,7 @@ When i send it hello
 It should return 'Hello, World!'
     END
   
-    @scenario = Scenario.new({
+    @scenario = RailsScenario.new({
       :title => "A Scenario", 
       :body  => @scenario_body
     })
@@ -33,7 +33,7 @@ It should return 'Hello, World!'
   context "aggregated" do
     
     before(:each) do
-      @mock_feature = mock(Feature)
+      @mock_feature = mock(RailsFeature)
       @mock_feature.stub!(:scenarios).and_return([@scenario, @given_scenario])
       @scenario.stub!(:parent).and_return(@mock_feature)
       @scenario.collect_steps

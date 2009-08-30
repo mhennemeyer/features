@@ -1,14 +1,13 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Suite do
+describe RailsSuite do
   before(:each) do
     @feature_files_path = File.dirname(__FILE__) + "/Resources"
-    @suite = Suite.new({
+    @suite = RailsSuite.new({
       :feature_files_path         => @feature_files_path,
       :feature_file_suffix        => "feature",
-      :test_cases_file            => @feature_files_path + "/OMFeatureTestCases.m",
-      :feature_class_header_files => ["OMFeature.h"],
-      :project_name               => "ObjectiveMatchy Features"
+      :test_cases_file            => @feature_files_path + "/FeatureTestCases.rb",
+      :project_name               => "Rails Features"
     })
   end
   
@@ -25,15 +24,11 @@ describe Suite do
   end
   
   it "has a project_name" do
-    @suite.project_name.should == "ObjectiveMatchy Features"
-  end
-  
-  it "has feature_class_header_files" do
-    @suite.feature_class_header_files.should eql(["OMFeature.h"])
+    @suite.project_name.should == "Rails Features"
   end
 
   it "has a test_cases_file" do
-    @suite.test_cases_file.should eql(@feature_files_path + "/OMFeatureTestCases.m")
+    @suite.test_cases_file.should eql(@feature_files_path + "/FeatureTestCases.rb")
   end
     
   it "has feature files" do
@@ -132,10 +127,7 @@ describe Suite do
     
     it "exposes itself as a string" do
       expected = <<-END
-    #import "OMFeature.h"
-    @interface SayHelloWorldTest : OMFeature
-    @end
-    @implementation SayHelloWorldTest
+    class SayHelloWorldTest < FeatureTestCase
     -(void) testWithABlankObject
     {
         [self Given_a_blank_Object]; [self When_i_send_it_hello]; [self It_should_return___:@"Hello, World!"];

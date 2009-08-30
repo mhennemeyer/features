@@ -28,7 +28,7 @@ class ObjcFeature < Feature
       :string => body,
       :keyword => scenario_keyword
     })
-    @scenarios = title_body_arr.map {|hash| Scenario.new(hash.update({
+    @scenarios = title_body_arr.map {|hash| ObjcScenario.new(hash.update({
       :parent => self,
       :given_scenario_keyword => given_scenario_keyword
     }))}

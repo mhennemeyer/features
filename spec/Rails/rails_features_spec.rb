@@ -76,17 +76,23 @@ describe RailsFeature do
       scenario.parent.should eql(@feature)
     end
 
-    it "exposes itself as a string" do
-      expected = <<-END
-      class SayHelloWorldTest < RailsTestCaseClass
-      def test_WithABlankObject
-        Given_a_blank_Object; When_i_send_it_hello; It_should_return___("Hello, World!");
+    describe "as string" do
+      
+      before(:each) do
+        scenario = mock(RailsScenario, :to_s => "scenario_def")
+        scenarios = [scenario, scenario]
+        @feature.stub!(:scenarios).and_return(scenarios)
       end
-      def test_WithACustomObject
-        Given_a_custom_Object_with_name___("Bob"); When_i_send_it_hello; It_should_return___("Hello, World! I am Bob.");
+      
+      it "exposes itself as a string" do
+        expected = <<-END
+        class SayHelloWorldTest < FeaturesTestCaseClass
+          scenario_def
+          scenario_def
+        end
+      END
+        @feature.to_s.ignore_whitespace.should eql(expected.ignore_whitespace)
       end
-    END
-      @feature.to_s.ignore_whitespace.should eql(expected.ignore_whitespace)
     end
     
     it "has a keyword" do

@@ -67,7 +67,7 @@ class ObjcScenario < Scenario
   end
   
   def parse_lines
-    lines.map {|l| Step.new({:title => l, :body => l}).aggregate!}
+    lines.map {|l| ObjcStep.new({:title => l, :body => l}).aggregate!}
   end
   
   def has_given_scenarios?

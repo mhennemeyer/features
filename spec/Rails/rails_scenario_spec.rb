@@ -93,36 +93,60 @@ describe RailsScenario do
       end
     end
     
-    context "verification" do
+    describe "verification" do
       
-      before(:each) do
-        @results = <<-END
-        Test Case '-[SayHelloWorldTest testWithACustomObject]' passed (0.001 seconds).
-        Hello!!!
-        2009-08-13 15:21:58.927 otest[1586:80f] HelloButtonHello
-        Test Case '-[SayHelloUniverseTest testWithACustomObject]' passed (0.001 seconds).
-        /Users/mhennemeyer/Projekte/ObjectiveMatchy/ObjectiveMatchyIphone/OMFeature.m:28: error: -[SayHelloWorldTest testJustOpenedTheApp] : '' should be equal to: 'h', but isn't (with isEqual:).
-        Test Case '-[SayHelloWorldTest testJustOpenedTheApp]' failed (0.001 seconds).
-        Test Case '-[SayHelloUniverseTest testWithABlankObject]' failed (0.001 seconds).
-        Test Case '-[SayHelloTest testWithABlankObject]' failed (0.001 seconds).
-        Test Case '-[SayHelloTest testWithACustomObject]' passed (0.001 seconds).
-        Test Suite 'SayHelloWorldTest' finished at 2009-08-13 15:21:58 +0200.
-        Executed 1 test, with 1 failure (1 unexpected) in 0.001 (0.001) seconds
+      context "failing" do
+        before(:each) do
+          @results = <<-END
+          (in /Users/mhennemeyer/Projekte/features/spec/Rails/Resources/railsapp)
+          /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -I"lib:test" "/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb" "test/integration/feature_test.rb" 
+          Loaded suite /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+          Started
+          F.F
+          Finished in 0.045529 seconds.
 
-        Test Suite '/Users/mhennemeyer/Projekte/ObjectiveMatchy/ObjectiveMatchyIphone/build/Debug-iphonesimulator/ObjectiveMatchyIphoneTest.octest(Tests)' finished at 2009-08-13 15:21:58 +0200.
-        Executed 4 tests, with 3 failures (3 unexpected) in 0.004 (0.007) seconds
+            1) Failure:
+          test_WithABlankObject(FeatureTest) [/test/integration/feature_test.rb:8]:
+          <false> is not true.
 
-        /Developer/Tools/RunPlatformUnitTests.include:390: error: Failed tests for architecture 'i386' (GC OFF)
-        /Developer/Tools/RunPlatformUnitTests.include:399: note: Completed tests for architectures 'i386'
-        
-        END
-        @mock_feature.should_receive(:test_case_name).and_return("SayHelloTest")
-        @scenario.verify_status(@results)
+            2) Failure:
+          test_AnotherFailingOne(FeatureTest) [/test/integration/feature_test.rb:16]:
+          <false> is not true.
+
+          3 tests, 3 assertions, 2 failures, 0 errors
+          rake aborted!
+          Command failed with status (1): [/System/Library/Frameworks/Ruby.framework/...]
+
+          (See full trace by running task with --trace)
+          END
+          @mock_feature.should_receive(:test_case_name).and_return("FeatureTest")
+          @scenario.verify_status(@results)
+        end
+
+        it "verifies its status" do
+          @scenario.passed?.should be_false
+        end
       end
       
-      it "verifies its status" do
-        @scenario.passed?.should be_false
+      context "passing" do
+        before(:each) do
+          @results = <<-END
+          (in /Users/mhennemeyer/Projekte/features/spec/Rails/Resources/railsapp)
+          /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -I"lib:test" "/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb" "test/integration/feature_test.rb" 
+          Loaded suite /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader
+          Started
+          ...
+          Finished in 0.045529 seconds.
+          END
+          @mock_feature.should_receive(:test_case_name).and_return("FeatureTest")
+          @scenario.verify_status(@results)
+        end
+
+        it "verifies its status" do
+          @scenario.passed?.should be_true
+        end
       end
+      
       
       describe "#to_html" do
         it "does something" do

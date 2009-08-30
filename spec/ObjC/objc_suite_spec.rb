@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 describe ObjcSuite do
   before(:each) do
     @feature_files_path = File.dirname(__FILE__) + "/Resources"
-    @suite = Suite.new({
+    @suite = ObjcSuite.new({
       :feature_files_path         => @feature_files_path,
       :feature_file_suffix        => "feature",
       :test_cases_file            => @feature_files_path + "/OMFeatureTestCases.m",

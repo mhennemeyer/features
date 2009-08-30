@@ -9,7 +9,7 @@ When i send it hello
 It should return 'Hello, World!'
     END
     
-    @given_scenario = Scenario.new({
+    @given_scenario = ObjcScenario.new({
       :title => "An existing Scenario", 
       :body  => @given_scenario_body
     })

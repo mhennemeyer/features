@@ -1,16 +1,15 @@
-class Suite
+class RailsSuite < Suite
   attr_reader :feature_files,              :feature_files_path, 
               :feature_file_suffix,        :feature_files_as_strings,
               :features,                   :test_cases_file,  
-              :feature_class_header_files, :given_scenario_keyword,
               :feature_keyword,            :scenario_keyword,
-              :project_name,               :passed
+              :project_name,               :passed, 
+              :given_scenario_keyword
   
   def initialize(hash)
     @feature_files_path          = hash[:feature_files_path]
     @feature_file_suffix         = hash[:feature_file_suffix] || "feature"
     @test_cases_file             = hash[:test_cases_file]
-    @feature_class_header_files  = hash[:feature_class_header_files] || ["OMFeature.h"]
     @feature_keyword             = hash[:feature_keyword] || "Feature:"
     @scenario_keyword            = hash[:scenario_keyword] || "Scenario:"
     @given_scenario_keyword      = hash[:given_scenario_keyword] || "GivenScenario:"
@@ -109,7 +108,6 @@ class Suite
   
   def to_s
     <<-END
-    #{feature_class_header_files.map { |f| "#import \"" + f + "\"" }.join(" ")}
     #{features.map {|f| f.to_s }.join(" ")}
     END
   end
@@ -119,7 +117,7 @@ class Suite
       :string => feature_files_as_strings.join(" "),
       :keyword => feature_keyword
     })
-    @features = title_body_arr.map {|hash| Feature.new(hash.update({:keyword => feature_keyword}))}
+    @features = title_body_arr.map {|hash| RailsFeature.new(hash.update({:keyword => feature_keyword}))}
   end
   
   def parse_feature_scenarios

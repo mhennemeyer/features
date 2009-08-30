@@ -38,7 +38,7 @@ class RailsFeature < Feature
   
   def to_s
     <<-END
-    class #{test_case_name} < RailsTestCaseClass
+    class #{test_case_name} < FeaturesTestCaseClass
     #{scenarios.map {|s| s.to_s}.join(" ")}
     end
     END
