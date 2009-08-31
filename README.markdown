@@ -2,6 +2,48 @@
 
 A Plain Text User Stories Parser that supports native Programming Languages.
 
+## Usage
+
+### Ruby on Rails
+
+1. Install features:
+
+		$ gem install features
+
+2. Generate the supporting folders from your rails apps root folder:
+
+		$ script/generate features
+
+3. Run the HelloWorld.feature:
+
+  * (OS X): There is a `run_features.rb` script that will open its results in Safari:
+
+			$ ruby test/features/run_features.rb
+
+  * (Other OS): INSTRUCTIONS WILL FOLLOW SOON ...
+
+4. Here is what the Html Output looks like:
+
+<img src="http://features.rubyforge.org/images/output-screen-1.png" width="400px">
+
+
+### Objective-C
+
+1. Install features:
+
+		$ sudo gem install 
+
+2. Download and install ObjectiveMatchy
+
+3. ObjectiveMatchy provides Xcode Project Templates that have a Feature Target. Create a new Xcode Project and choose one of the ObjectiveMatchy Templates.
+
+
+4. ...
+
+### More Languages will follow ...
+		
+
+
 ## How it works
 
 ### Features parses  plain-text user story files 
@@ -47,7 +89,13 @@ will look like in the different languages:
 
 * Other Languages (Java, C#, C++, Python) will follow soon ...
 
-## USAGE
+
+### Provide Step Implementations
+
+Steps are instance method of the intermediate TestCase class (eg 'FeaturesTestCaseClass' in Rails)  
+that inherits from the language specific TestCase class (eg 'ActionController::IntegrationTest' in Rails)   
+and that itself is the parent of the generated TestCases. This way, all test method implementations (aka Scenarios)   
+will have access to the steps.
 
 ## Installation
 
