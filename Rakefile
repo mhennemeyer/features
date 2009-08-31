@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('features', '0.1.1') do |p|
+Echoe.new('features', '0.1.2') do |p|
   p.description    = "Plaintext User Stories Parser supporting native programming languages."
   p.url            = "http://features.rubyforge.org"
   p.author         = "Matthias Hennemeyer"
