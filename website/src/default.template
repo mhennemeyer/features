@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang:}">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="description goes here" />
+    <meta name="keywords" content="keywords,goes,here" />
+    <meta name="author" content="Your Name" />
+    <meta name="generator" content="webgen - http://webgen.rubyforge.org" />
+    <link rel="stylesheet" type="text/css" href="{relocatable: default.css}" />
+    <!--[if IE 6]>
+        <link rel="stylesheet" href="{relocatable: browserfix.css}" type="text/css" />
+        <![endif]-->
+    <title>{title:}</title>
+  </head>
+
+  
+
+<body>
+	<a name="top"></a>
+	<div id="page">
+		
+		<div id="page-inner">
+  		<div id="header">
+				<div id="header-inner">
+
+					<a href="index.html">
+						<div id="logo">
+							<div id="logo-inner">
+							</div>
+						</div>
+						<div id="site-name">
+							<div id="site-name-inner">
+								<h1 id="site-name-inner-title">features</h1>
+								<p id="site-name-inner-slogan">A Plain Text User Stories Parser Supporting native Programming Languages</p>
+							</div>
+						</div>
+					</a>
+					
+					<div class="clearer">&nbsp;</div>
+					
+					<div id="tabs">
+						<div id="tabs-inner">
+
+						</div>
+						<div class="clearer">&nbsp;</div>
+					</div>
+					<div class="clearer">&nbsp;</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="clearer">&nbsp;</div>
+			
+			<div id="main">
+				<div id="main-inner">
+					
+					<div id="content">
+						<div id="content-inner">
+							 <div id="content-container">
+							   <webgen:block name="content" />
+							 </div>
+						</div>
+					</div>
+					
+					<div id="sidebar">
+						<div id="sidebar-inner">
+							{menu: {max_levels: 1, used_nodes: files}}
+						</div>
+					</div>
+					
+					<div class="clearer">&nbsp;</div>
+				</div>
+				<div class="clearer">&nbsp;</div>
+			</div>
+			
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div id="footer">
+			<div id="footer-inner">
+				&copy; 2009 Matthias Hennemeyer. All Rights Reserved.
+			</div>
+		</div>
+		
+	</div>
+	
+</body>
+</html>
+

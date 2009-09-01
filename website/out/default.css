@@ -1,0 +1,257 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* No underlining */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #CFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+-x-system-font: none;
+color: black;
+font-family: 'Trebuchet MS', Arial, Sans-serif;
+font-size: 1.3em;
+font-size-adjust: none;
+font-stretch: normal;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+line-height: normal;
+}
+
+h1 {
+  font-size: 1.8em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+body {
+  color: black;
+  -x-system-font: none;
+  font-family: Lucida Grande, Tahoma, 'Trebuchet MS', sans-serif;
+  font-size: 1em;
+  font-size-adjust: none;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1.5em;
+}
+
+p, h1, h2, h3 {
+margin: 0;
+padding: 5px 0;
+}
+
+ul, ol {
+margin: 10px 0;
+padding: 0 15px;
+}
+
+img {
+  border: none;
+}
+
+.clearer {
+  clear: both;
+  height: 1px;
+}
+
+
+/* Header */
+
+#header {
+  background: url("images/header-bg.gif");
+  color: white;
+  width: 100%;
+}
+
+#header-inner {
+  padding-top: 10px;
+}
+
+#header a {
+  color: white;
+}
+
+#logo {
+  float: left;
+  width: 15%;
+}
+
+#logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+#site-name {
+  float: right;
+  width: 85%;
+}
+
+#site-name-inner-title {
+  color: white;
+  font-size: 36pt;
+  padding-bottom: 0;
+}
+
+#site-name-inner-slogan{
+  padding-top: 0;
+}
+
+/* Tabs */
+
+#tabs {
+  color: white;
+  float: left;
+  margin-top: -1em;
+  text-align: right;
+  width: 70%;
+}
+
+#tabs a {
+  color: white;
+  font-size: 1.3em;
+}
+
+#tabs a:hover {
+  color: #CFF;
+}
+
+
+#tabs ul {
+  list-style-type: none;
+}
+
+#tabs li {
+  display: inline;
+  padding: 0.5em;
+}
+
+#tabs #current_tab a{
+  color: red;
+  font-size: 1.5em;
+}
+
+/* Main: Wraps sidebar and content*/
+
+#main {
+  border-top: 3px solid #333;
+  background: gray;
+  margin: -1px auto 0 auto;
+}
+
+/* Right Sidebar*/
+
+#sidebar {
+  background: gray;
+  float: right;
+  width: 30%;
+}
+
+#sidebar-inner {
+  padding: 20px;
+}
+
+#menu {
+  color: white;
+  font-size: 1.1em;
+  list-style-type: none;
+}
+
+#menu a {
+  color: white;
+}
+
+#menu a:hover {
+  color: #CFF;
+}
+
+#menu #current_page{
+  color: red;
+  font-size: 1.2em;
+  list-style-type: none;
+}
+
+#menu #current_page a {
+  color: red;
+}
+
+#menu #current_page a:hover {
+  color: #CFF;
+}
+
+#menu #current_page .outline {
+  list-style-type: none;
+  font-size: 0.6em;
+  color: black;
+}
+
+#menu #current_page .outline li a{
+  color: black;
+}
+/* Content */
+
+#content {
+  background: #EEE;
+  float: left;
+  width: 70%;
+}
+
+#content-inner {
+  padding: 20px 40px 10px 40px;
+}
+
+#content h1 a {
+  color: gray;
+  font-size: 0.5em;
+}
+
+#content h2 a {
+  color: gray;
+  font-size: 0.5em;
+}
+
+#content h3 a {
+  color: gray;
+  font-size: 0.5em;
+}
+
+#content h4 a {
+  color: gray;
+  font-size: 0.5em;
+}
+
+
+
+
+/* Footer */
+
+#footer {
+  background: url("images/header-bg.gif");
+  border-top: 3px solid #333;
+  border-bottom: 50px solid black;
+  color: white;
+  font-size: 1.3em;
+  margin-top: -3px;
+  text-align: center;
+  width: 100%;
+}
+
+#footer a {
+  color: white;
+}
+
+
+#footer-inner {
+  padding: 20px;
+}

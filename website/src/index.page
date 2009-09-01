@@ -1,3 +1,10 @@
+---
+title: Home
+in_menu: true
+---
+
+This is just the README. A real Website will follow.
+
 # Features
 
 A Plain Text User Stories Parser that supports native Programming Languages.
@@ -14,17 +21,15 @@ A Plain Text User Stories Parser that supports native Programming Languages.
 
 		$ script/generate features
 
-3. Run the HelloWorld.feature:
-
-  * (OS X): There is a `run_features.rb` script that will open its results in Safari:
+3. Run the HelloWorld.feature:   
+  	* (OS X): There is a `run_features.rb` script that will open its results in Safari:
 
 			$ ruby test/features/run_features.rb
 
-  * (Other OS): INSTRUCTIONS WILL FOLLOW SOON ...
-
+    * (Other OS): INSTRUCTIONS WILL FOLLOW SOON ...
 4. Here is what the Html Output looks like:
 
-<img src="http://features.rubyforge.org/images/output-screen-1.png" width="400px">
+<img src="images/output-screen-1.png" width="400px">
 
 
 ### Objective-C
