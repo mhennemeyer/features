@@ -1,4 +1,0 @@
-# Logfile created on Tue Sep 01 11:13:55 +0200 2009
-
-Processing HelloworldController#index (for 127.0.0.1 at 2009-09-01 11:13:56) [GET]
-Completed in 2ms (View: 0, DB: 1) | 200 OK [http://www.example.com/]
