@@ -119,7 +119,7 @@ class ObjcSuite < Suite
       :string => feature_files_as_strings.join(" "),
       :keyword => feature_keyword
     })
-    @features = title_body_arr.map {|hash| ObjcFeature.new(hash.update({:keyword => feature_keyword}))}
+    @features = title_body_arr.map {|hash| ObjcFeature.new(hash.update({:keyword => feature_keyword, :scenario_keyword => scenario_keyword}))}
   end
   
   def parse_feature_scenarios
