@@ -87,7 +87,7 @@ will look like in the different languages:
 		    }
 		  @end
 
-* Other Languages (Java, C#, C++, Python) will follow soon ...
+* Other Languages (Java, C#, C++, Python, PHP) will follow soon ...
 
 
 ### Provide Step Implementations
@@ -96,6 +96,36 @@ Steps are instance method of the intermediate TestCase class (eg 'FeaturesTestCa
 that inherits from the language specific TestCase class (eg 'ActionController::IntegrationTest' in Rails)   
 and that itself is the parent of the generated TestCases. This way, all test method implementations (aka Scenarios)   
 will have access to the steps.
+
+The implementation follows the some patterns :
+
+* Only use characters that may appear in method and class definitions.
+* Spaces in the step definition map to underscores in the implementation:
+
+		(Rails) Given something => given_Something
+		(ObjC)  Given something => Given_Something
+	
+
+
+* Place Holders for variable strings (that can be passed to the step implementation) are 
+  identified by double underscores (plus underscores for spaces) in the step implementation and strings are single quoted 
+  in the step definition:
+
+		# Step definition
+		When i say 'Hello, World!'
+	
+		# Rails Step implementation
+		def when_i_say___(string)
+			# do something
+		end
+	
+		# ObjectiveC Step implementation
+		-(void) When_i_say___:(NSString *) string
+		{
+			// do something
+		} 
+		
+
 
 ## Installation
 

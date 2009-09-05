@@ -5,7 +5,6 @@ describe ObjcStep do
     before(:each) do
       @line = "Given a blank Object"
       @step = ObjcStep.new({
-        :title => @line, 
         :body  => @line
       }).aggregate!
     end
@@ -24,10 +23,6 @@ describe ObjcStep do
     
     it "finds the args" do
       @step.args.should eql([])
-    end
-
-    it "has a title" do
-      @step.title.should eql(@line)
     end
     
     it "preserves single quotes" do
@@ -67,7 +62,6 @@ describe ObjcStep do
     before(:each) do
       @line = "Given a custom Object 'Bob'"
       @step = ObjcStep.new({
-        :title => @line, 
         :body  => @line
       }).aggregate!
     end
@@ -111,7 +105,6 @@ describe ObjcStep do
     before(:each) do
       @line = "Given a custom Object 'Bob' so far"
       @step = ObjcStep.new({
-        :title => @line, 
         :body  => @line
       }).aggregate!
     end
@@ -141,7 +134,6 @@ describe ObjcStep do
     before(:each) do
       @line = "Given a custom Object 'Bob' with attribute 'Jim'"
       @step = ObjcStep.new({
-        :title => @line, 
         :body  => @line
       }).aggregate!
     end
@@ -185,7 +177,6 @@ describe ObjcStep do
     before(:each) do
       @line = "Given a custom Object 'Bob' with attribute 'Jim' so far"
       @step = ObjcStep.new({
-        :title => @line, 
         :body  => @line
       }).aggregate!
     end
@@ -199,7 +190,6 @@ describe ObjcStep do
     before(:each) do
       @line = "Given a custom Object 'Bob' with attribute 'Jim' and 'John'"
       @step = ObjcStep.new({
-        :title => @line, 
         :body  => @line
       }).aggregate!
     end

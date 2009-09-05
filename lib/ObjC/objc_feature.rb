@@ -1,36 +1,13 @@
 class ObjcFeature < Feature
-  attr_reader :scenarios, :scenario_keyword,
-              :title, :body, :parent, :parser,
-              :given_scenario_keyword, :keyword
-  
-  def initialize(hash={})
-    @title                  = hash[:title]
-    @body                   = hash[:body]
-    @parent                 = hash[:parent]
-    @keyword                = hash[:keyword] || "Feature:"
-    @scenario_keyword       = hash[:scenario_keyword] || "Scenario:"
-    @given_scenario_keyword = hash[:given_scenario_keyword] || "GivenScenario:"
-    
-    raise "No title given" unless title
-    raise "No body given" unless body
-  end
-  
-  def story
-    body.split(/#{scenario_keyword}/)[0].split(/#{keyword}\s#{title}/).join(" ").strip
-  end
-  
-  def story_html
-    story.split("\n").join(" <br />")
-  end
-  
-  def parse_scenarios
+  def parse_scenarios(klass=ObjcScenario)
     title_body_arr = Parser.title_and_body_by_keyword_from_string({
       :string => body,
       :keyword => scenario_keyword
     })
-    @scenarios = title_body_arr.map {|hash| ObjcScenario.new(hash.update({
+    @scenarios = title_body_arr.map {|hash| klass.new(hash.update({
       :parent => self,
-      :given_scenario_keyword => given_scenario_keyword
+      :given_scenario_keyword => given_scenario_keyword,
+      :follow_up_keyword => follow_up_keyword
     }))}
     @scenarios.each {|scenario| scenario.collect_steps}
     self

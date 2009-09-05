@@ -145,7 +145,7 @@ describe ObjcFeature do
 
       describe "'Given a custom Object with name 'Bob'' Step" do
         before(:each) do
-          @step = @scenario.steps.detect {|s| s.title == "Given a custom Object with name 'Bob'"}
+          @step = @scenario.steps.detect {|s| s.body == "Given a custom Object with name 'Bob'"}
         end
 
         it "exists" do
@@ -160,7 +160,7 @@ describe ObjcFeature do
 
       describe "'When i send it hello' Step" do
         before(:each) do
-          @step = @scenario.steps.detect {|s| s.title == "When i send it hello"}
+          @step = @scenario.steps.detect {|s| s.body == "When i send it hello"}
         end
 
         it "exists" do
@@ -175,7 +175,7 @@ describe ObjcFeature do
 
       describe "'It should return 'Hello, World! I am Bob.' Step" do
         before(:each) do
-          @step = @scenario.steps.detect {|s| s.title == "It should return 'Hello, World! I am Bob.'"}
+          @step = @scenario.steps.detect {|s| s.body == "It should return 'Hello, World! I am Bob.'"}
         end
 
         it "exists" do

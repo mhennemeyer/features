@@ -1,0 +1,8 @@
+Funktion: Anmelden
+
+Beispiel: Neuer Benutzer wird angemelded
+	Wenn ich die Seite '/' oeffne
+	Dann sehe ich 'Anmelden'
+	Wenn ich auf 'Anmelden' klicke
+	Dann sehe ich 'Email:'
+	Und |Passwort:|

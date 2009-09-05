@@ -14,6 +14,12 @@ Feature: Say Hello World
 		When i send it hello
 		It should return 'Hello, World! I am Bob.'
 		
+	Scenario: With a Follow Up
+		Given a custom Object with name 'Bob'
+		When i send it hello
+		It should return 'Hello, World! I am Bob.'
+		And |Hello, World! I am Bob.| 
+		
 		
 Feature: Say Hello Universe
 

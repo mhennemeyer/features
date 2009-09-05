@@ -34,6 +34,10 @@ describe RailsScenario do
       @scenario.given_scenario_keyword.should eql("GivenScenario:")
     end
     
+    it "has a follow_up_keyword" do
+      @scenario.follow_up_keyword.should eql("And")
+    end
+    
     it "has a test_name" do
       @scenario.test_name.should == "test_WithABlankObject"
     end
