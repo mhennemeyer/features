@@ -2,7 +2,8 @@ class ObjcScenario < Scenario
   def verify_status(results="")
     test_case_name = parent.test_case_name
     #Test Case '-[SayHelloTest testWithABlankObject]' failed (0.001 seconds).
-    results =~ /Test\sCase\s'-\[#{test_case_name}\s#{test_name}\]'\s(\w+)/
+    # ignore "... started."
+    results =~ /Test\sCase\s'-\[#{test_case_name}\s#{test_name}\]'\s(passed|failed)/
     match = $1
     if match =~ /failed/
       @passed = false

@@ -29,16 +29,8 @@ A Plain Text User Stories Parser that supports native Programming Languages.
 
 ### Objective-C
 
-1. Install features:
-
-		$ sudo gem install 
-
-2. Download and install ObjectiveMatchy
-
-3. ObjectiveMatchy provides Xcode Project Templates that have a Feature Target. Create a new Xcode Project and choose one of the ObjectiveMatchy Templates.
-
-
-4. ...
+Use the iphone-bdd-tools installer to install customized Xcode Templates that 
+have a Features Target. 
 
 ### More Languages will follow ...
 		

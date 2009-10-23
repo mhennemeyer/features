@@ -62,7 +62,7 @@ class Scenario
     step = ""
     for line in lines
       if line =~ follow_up_line_exp
-        args = line.sub(/^\s*#{follow_up_keyword}\s*/, "").split("|").reject {|arg| arg =~ /\A\s*\Z/ }.map {|arg| "'" + arg + "'"}
+        args = line.sub(/^\s*#{follow_up_keyword}\s*/, "").split("|").reject {|arg| arg =~ /\A\s*\Z/ }.map {|arg| "'" + arg.strip + "'"}
         arr  = step.split("'").reject {|elt| elt =~ /\A\s*\Z/ }
         offset = (step =~ /\A\s*'/) ? 0 : 1
         new_step = ""

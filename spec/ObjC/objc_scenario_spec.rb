@@ -92,6 +92,7 @@ describe ObjcScenario do
         Test Case '-[SayHelloWorldTest testWithACustomObject]' passed (0.001 seconds).
         Hello!!!
         2009-08-13 15:21:58.927 otest[1586:80f] HelloButtonHello
+        Test Case '-[SayHelloTest testWithABlankObject]' started.
         Test Case '-[SayHelloUniverseTest testWithACustomObject]' passed (0.001 seconds).
         /Users/mhennemeyer/Projekte/ObjectiveMatchy/ObjectiveMatchyIphone/OMFeature.m:28: error: -[SayHelloWorldTest testJustOpenedTheApp] : '' should be equal to: 'h', but isn't (with isEqual:).
         Test Case '-[SayHelloWorldTest testJustOpenedTheApp]' failed (0.001 seconds).
